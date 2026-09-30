@@ -43,15 +43,21 @@ def create_app(config_name=None):
     from routes.live_routes import live_bp
     from routes.location_routes import location_bp
 
-    app.register_blueprint(health_bp, url_prefix='/api')
-    app.register_blueprint(cyclone_bp, url_prefix='/api')
-    app.register_blueprint(infrastructure_bp, url_prefix='/api')
-    app.register_blueprint(forecast_bp, url_prefix='/api')
-    app.register_blueprint(simulation_bp, url_prefix='/api')
-    app.register_blueprint(gee_bp, url_prefix='/api')
-    app.register_blueprint(ai_bp, url_prefix='/api')
-    app.register_blueprint(live_bp, url_prefix='/api')
-    app.register_blueprint(location_bp, url_prefix='/api')
+    blueprints = [
+        (health_bp, 'health'),
+        (cyclone_bp, 'cyclone'),
+        (infrastructure_bp, 'infrastructure'),
+        (forecast_bp, 'forecast'),
+        (simulation_bp, 'simulation'),
+        (gee_bp, 'gee'),
+        (ai_bp, 'ai'),
+        (live_bp, 'live'),
+        (location_bp, 'location'),
+    ]
+
+    for bp, name in blueprints:
+        app.register_blueprint(bp, url_prefix='/api', name=f"{name}_api")
+        app.register_blueprint(bp, url_prefix='', name=f"{name}_raw")
 
     # Start Live Telemetry Update Loop (only when not running on Vercel serverless)
     if not os.getenv('VERCEL') and not os.getenv('AWS_LAMBDA_FUNCTION_NAME'):
