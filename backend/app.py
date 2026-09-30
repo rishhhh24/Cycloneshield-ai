@@ -21,8 +21,8 @@ def create_app(config_name=None):
 
     # Initialize DB & Seed Demo Data
     with app.app_context():
-        init_db()
         try:
+            init_db()
             seed_demo_data()
         except Exception as e:
             print(f"Demo data initialization note: {e}")
@@ -53,9 +53,13 @@ def create_app(config_name=None):
     app.register_blueprint(live_bp, url_prefix='/api')
     app.register_blueprint(location_bp, url_prefix='/api')
 
-    # Start Live Telemetry Update Loop
-    from services.live_manager import LiveManager
-    LiveManager.get_instance().start()
+    # Start Live Telemetry Update Loop (only when not running on Vercel serverless)
+    if not os.getenv('VERCEL') and not os.getenv('AWS_LAMBDA_FUNCTION_NAME'):
+        try:
+            from services.live_manager import LiveManager
+            LiveManager.get_instance().start()
+        except Exception as e:
+            print(f"LiveManager start note: {e}")
 
 
 

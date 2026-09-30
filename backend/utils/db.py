@@ -6,6 +6,8 @@ import os
 from flask import current_app, g
 
 def get_db_path():
+    if os.getenv('VERCEL') or os.getenv('AWS_LAMBDA_FUNCTION_NAME'):
+        return '/tmp/cycloneshield.db'
     if current_app and 'DATABASE_PATH' in current_app.config:
         return current_app.config['DATABASE_PATH']
     return os.path.join(os.path.dirname(os.path.dirname(__file__)), 'database', 'cycloneshield.db')
