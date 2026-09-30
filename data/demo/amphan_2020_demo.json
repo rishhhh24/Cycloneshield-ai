@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "cyclone_name": "AMPHAN",
+    "year": 2020,
+    "basin": "Bay of Bengal",
+    "ocean_basin_code": "NI",
+    "is_demo_data": true,
+    "source_note": "Demo track representation based on NOAA IBTrACS historical track data for Cyclone Amphan (May 2020)."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [86.3, 13.2]
+      },
+      "properties": {
+        "timepoint_id": "amphan_tp_01",
+        "timestamp_utc": "2020-05-16T12:00:00Z",
+        "wind_speed_knots": 45,
+        "central_pressure_hpa": 998,
+        "storm_category": "CS",
+        "distance_to_landfall_km": 820.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [86.7, 15.4]
+      },
+      "properties": {
+        "timepoint_id": "amphan_tp_02",
+        "timestamp_utc": "2020-05-17T12:00:00Z",
+        "wind_speed_knots": 85,
+        "central_pressure_hpa": 965,
+        "storm_category": "VSCS",
+        "distance_to_landfall_km": 560.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [87.9, 18.8]
+      },
+      "properties": {
+        "timepoint_id": "amphan_tp_03",
+        "timestamp_utc": "2020-05-18T18:00:00Z",
+        "wind_speed_knots": 130,
+        "central_pressure_hpa": 920,
+        "storm_category": "SuCS",
+        "distance_to_landfall_km": 240.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.3, 21.7]
+      },
+      "properties": {
+        "timepoint_id": "amphan_tp_04",
+        "timestamp_utc": "2020-05-20T12:00:00Z",
+        "wind_speed_knots": 85,
+        "central_pressure_hpa": 960,
+        "storm_category": "VSCS",
+        "is_landfall_point": true,
+        "landfall_location": "Sunderbans / Digha, West Bengal",
+        "distance_to_landfall_km": 0.0
+      }
+    }
+  ]
+}

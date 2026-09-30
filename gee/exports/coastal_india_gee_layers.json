@@ -1,0 +1,58 @@
+{
+  "gee_pipeline_metadata": {
+    "region": "Coastal Odisha & West Bengal (Bay of Bengal)",
+    "bounding_box": [
+      85.0,
+      19.0,
+      89.5,
+      23.0
+    ],
+    "exported_at": "2026-09-26T15:00:00Z",
+    "crs": "EPSG:4326 (WGS84)"
+  },
+  "elevation_dem": {
+    "source": "USGS/SRTMGL1_003 (Pre-processed GEE Export)",
+    "elevation_mean_meters": 5.8,
+    "elevation_min_meters": 0.5,
+    "elevation_max_meters": 38.0,
+    "high_vulnerability_zone": "< 5.0m ASL",
+    "note": "GEE Live Connection Note: Earth Engine client library not initialized. See http://goo.gle/ee-auth.",
+    "is_live_ee": false
+  },
+  "sentinel1_sar_flood": {
+    "dataset": "COPERNICUS/S1_GRD (Pre-processed GEE Synthetic Aperture Radar)",
+    "event_key": "amphan_2020",
+    "pre_event_window": [
+      "2020-05-01",
+      "2020-05-15"
+    ],
+    "post_event_window": [
+      "2020-05-21",
+      "2020-06-05"
+    ],
+    "pre_image_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20200512T120000",
+    "post_image_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20200524T120000",
+    "polarization": "VV/VH",
+    "flood_inundation_detected_sqkm": 420.5,
+    "note": "GEE Live Connection Note: Earth Engine client library not initialized. See http://goo.gle/ee-auth.",
+    "is_live_ee": false
+  },
+  "chirps_precipitation": {
+    "dataset": "UCSB-CHG/CHIRPS/DAILY (Pre-processed GEE Export)",
+    "max_24h_precipitation_mm": 280.0,
+    "accumulated_storm_rainfall_mm": 415.2,
+    "note": "GEE Live Connection Note: Earth Engine client library not initialized. See http://goo.gle/ee-auth.",
+    "is_live_ee": false
+  },
+  "esa_worldcover": {
+    "dataset": "ESA/WorldCover/v100 (Pre-processed GEE Export)",
+    "landcover_classes": {
+      "mangroves_wetlands_percent": 24.5,
+      "cropland_percent": 42.0,
+      "built_up_settlements_percent": 18.5,
+      "water_bodies_percent": 15.0
+    },
+    "note": "GEE Live Connection Note: Earth Engine client library not initialized. See http://goo.gle/ee-auth.",
+    "is_live_ee": false
+  }
+}
