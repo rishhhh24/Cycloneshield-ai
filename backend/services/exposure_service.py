@@ -3,10 +3,16 @@ CycloneShield AI - Infrastructure Exposure Analysis Service (GeoPandas & Shapely
 Calculates spatial buffer intersections, exposed road/rail distances, and asset risk scores.
 """
 import json
-import numpy as np
-import pandas as pd
-import geopandas as gpd
-from shapely.geometry import Point, LineString, MultiPoint
+try:
+    import numpy as np
+    import pandas as pd
+    import geopandas as gpd
+    from shapely.geometry import Point, LineString, MultiPoint
+except ImportError:
+    np = None
+    pd = None
+    gpd = None
+    Point = LineString = MultiPoint = None
 from services.gis_service import GISService
 from models.infrastructure import InfrastructureModel
 from models.cyclone import CycloneModel
@@ -25,10 +31,13 @@ class ExposureService:
             {"latitude": c[1], "longitude": c[0]} for c in track_coords
         ]
 
-        if len(track_coords) > 1:
-            storm_path_geom = LineString(track_coords)
+        if LineString is not None and Point is not None:
+            if len(track_coords) > 1:
+                storm_path_geom = LineString(track_coords)
+            else:
+                storm_path_geom = Point(track_coords[0])
         else:
-            storm_path_geom = Point(track_coords[0])
+            storm_path_geom = None
 
         # 2. Query Infrastructure Features
         infra_collection = InfrastructureModel.get_all()

@@ -31,7 +31,7 @@ class VulnerabilityPredictor:
         xgb_path = os.path.join(MODEL_DIR, 'vulnerability_xgb.joblib')
         prep_path = os.path.join(MODEL_DIR, 'preprocessor.joblib')
 
-        if os.path.exists(xgb_path) and os.path.exists(prep_path):
+        if joblib is not None and os.path.exists(xgb_path) and os.path.exists(prep_path):
             try:
                 self.xgb_model = joblib.load(xgb_path)
                 self.preprocessor = joblib.load(prep_path)

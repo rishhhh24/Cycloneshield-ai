@@ -33,6 +33,9 @@ class LiveManager:
             return cls._instance
 
     def start(self):
+        if os.getenv('VERCEL') or os.getenv('AWS_LAMBDA_FUNCTION_NAME') or os.getenv('SERVERLESS'):
+            # In serverless environment, state is updated on-demand per request
+            return
         if not self.running:
             self.running = True
             self.thread = threading.Thread(target=self._background_loop, daemon=True)
