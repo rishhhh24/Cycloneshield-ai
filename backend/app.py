@@ -70,8 +70,10 @@ def create_app(config_name=None):
 
     return app
 
+# Expose app WSGI entrypoint for Vercel serverless deployment
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     port = int(os.getenv('PORT', 5000))
     print(f"Starting CycloneShield AI Backend Engine on port {port}...")
     app.run(host='0.0.0.0', port=port, debug=True)
