@@ -2,9 +2,14 @@
 CycloneShield AI - ML Feature Preprocessing Module
 Extracts, scales, and formats raw meteorological, geospatial, and infrastructure features for model inference.
 """
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
+try:
+    import numpy as np
+    import pandas as pd
+    from sklearn.preprocessing import StandardScaler
+except ImportError:
+    np = None
+    pd = None
+    StandardScaler = None
 
 # Feature vector definitions
 FEATURE_COLUMNS = [

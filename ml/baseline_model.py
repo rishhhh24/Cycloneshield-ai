@@ -2,8 +2,12 @@
 CycloneShield AI - Multi-Criteria Baseline Vulnerability Risk Model
 Decision-support prototype engine providing deterministic risk scoring and feature explainability.
 """
-import numpy as np
-import pandas as pd
+try:
+    import numpy as np
+    import pandas as pd
+except ImportError:
+    np = None
+    pd = None
 
 class BaselineVulnerabilityModel:
     """

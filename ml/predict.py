@@ -4,9 +4,14 @@ Provides standardized risk predictions, risk categorization, and explainable con
 """
 import os
 import sys
-import numpy as np
-import pandas as pd
-import joblib
+try:
+    import numpy as np
+    import pandas as pd
+    import joblib
+except ImportError:
+    np = None
+    pd = None
+    joblib = None
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ml.baseline_model import BaselineVulnerabilityModel
